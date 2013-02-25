@@ -1,0 +1,37 @@
+--- 
+layout: post
+title: Google, the Almighty
+tags: 
+- Coding
+- developers
+- google
+- programming
+- query
+- search
+- web
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "27826612"
+  jabber_published: "1320389779"
+  email_notification: "1320389780"
+  tagazine-media: a:7:{s:7:"primary";s:0:"";s:6:"images";a:1:{s:57:"http://pennyhacks.files.wordpress.com/2011/11/google1.png";a:6:{s:8:"file_url";s:57:"http://pennyhacks.files.wordpress.com/2011/11/google1.png";s:5:"width";s:3:"498";s:6:"height";s:3:"190";s:4:"type";s:5:"image";s:4:"area";s:5:"94620";s:9:"file_path";s:0:"";}}s:6:"videos";a:0:{}s:11:"image_count";s:1:"1";s:6:"author";s:8:"27826612";s:7:"blog_id";s:8:"28246904";s:9:"mod_stamp";s:19:"2011-11-04 07:04:36";}
+---
+<br /><a href="http://pennyhacks.files.wordpress.com/2011/11/google1.png"><img style="border:none;background-color:white;" class="aligncenter size-full wp-image-100" title="google" src="http://pennyhacks.files.wordpress.com/2011/11/google1.png" alt="" width="498" height="190" /></a><br />As I finish up my hack (largely based on searching and natural language processing), I wanted to step back and praise Google for their amazing search. Much of what they do is taken for granted, but over the course of the last two weeks I've really dived into the inner workings of Google's search. I have renewed appreciation. Consider the fact that there are approximately <a href="http://en.wikipedia.org/wiki/Google_Search">25 billion web pages</a> contained in the Internet. Then consider that Google is able to not only come up with the most relevant articles but also do it in less than half a second. 25 billion web pages! Even naively, by taking the search query and just looking for matches, that's a whole a data to go through.
+
+But let's take it a little further. Before you have even typed your second letter Google is already guessing what you are searching with, to the best of my guesses, some sort of Markov chaining. Alright so what? They are smart dudes after all and this should be expected. Now take a look under one of the resultant links. A nice little description of the relevant sentences pertaining to your query. As I looked to add this to my website, I began to wonder how they did this. First, they must store all that text from the articles somewhere (which was a deal breaker for me since I'm using one server that's sitting under my bed). Then they have to sift through the text to find what's relevant to the query using some natural language processing. It's pretty neat when you think about it. Further, when I was building my search function I ran into the issue of stemmed words. If you stem a query (which is usually a good idea) you must also stem the text you're searching in. So Google probably has 2 copies of every article, stemmed and unstemmed. Then what? Do you search the stemmed query in the stemmed text and then somehow relate that to the unstemmed text that needs to be displayed as a description? By this point, my mind is blown. But on top of all that, Google has to handle 400 million queries a day. That's a lot of queries.
+
+I could go on forever talking about all the stuff that needs to be done in that half of a second (advanced searches, etc), but I thought this was a good list to start with. Just to recap, here's what goes on in just a day of searches:
+
+for (int i = 0; i &lt; 400 million; i++) {
+<ol>
+	<li>Process query and predict what the user is going to query for</li>
+	<li>Handle funky searches and advanced searches</li>
+	<li>Find relevant articles out of the 25 billions pages indexed</li>
+	<li>Search articles for relevant description</li>
+	<li>Output unstemmed description</li>
+	<li>Finish in under half a second</li>
+</ol>
+<div>}</div>
+<div>I hope that next time you type a search in on Google you take a second to think about the crazy technology that must be behind it. For that matter take a second to think about any site you go to, consider how painstakingly long it took the developer just to churn out one simple feature. How many bugs and how many times he or she had to hit the refresh button on the browser in order to get that site working like a well oiled machine. Thank you to all those brilliant developers out there creating amazing things everyday.</div>
